@@ -1,9 +1,9 @@
-======Pomelo0.8.0======
+========Pomelo0.8.0========
 
-====Application====
+=======Application=======
 Application prototype.
 
-===getBase===
+=====getBase=====
 **Application.getBase()**
 type: method
 
@@ -15,5 +15,59 @@ Get application base path
 <code>
 Application.getBase = function() {
   return this.get(Constants.Reserved.BASE);
+};
+</code>
+
+=====filter=====
+**Application.filter()**
+
+type: method
+
+**Params**
+filter - provide before and after filter method.
+
+add a filter to before and after filter
+
+**Source**
+<code>
+Application.filter = function (filter) {
+  this.before(filter);
+  this.after(filter);
+};
+</code>
+
+=====before=====
+**Application.before()**
+
+type: method
+
+**Params**
+
+bf - before fileter, bf(msg, session, next)
+
+Add before filter.
+
+**Source**
+<code>
+Application.before = function (bf) {
+  addFilter(this, Constants.KeyWords.BEFORE_FILTER, bf);
+};
+</code>
+
+=====after=====
+**Application.after()**
+
+type: method
+
+**Params**
+
+af - after filter, `af(err, msg, session, resp, next)`
+
+Add after filter.
+
+**Source**
+<code>
+Application.after = function (af) {
+  addFilter(this, Constants.KeyWords.AFTER_FILTER, af);
 };
 </code>
