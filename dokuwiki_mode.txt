@@ -1,0 +1,19 @@
+======Pomelo0.8.0======
+
+====Application====
+Application prototype.
+
+===getBase===
+**Application.getBase()**
+type: method
+
+Get application base path
+
+// cwd: /home/game/ pomelo start // app.getBase() -> /home/game
+
+**Source**
+<code>
+Application.getBase = function() {
+  return this.get(Constants.Reserved.BASE);
+};
+</code>
